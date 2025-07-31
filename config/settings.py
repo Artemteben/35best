@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+import sys
 from celery.schedules import crontab
 from decouple import config
 
@@ -62,8 +62,8 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 if "test" in sys.argv:
     DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
+        "default": {
+         "ENGINE": "django.db.backends.sqlite3",
     }}
 else:
     DATABASES = {
@@ -75,7 +75,7 @@ else:
             "HOST": config("HOST"),
             "PORT": config("PORT"),
         }
-}
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
