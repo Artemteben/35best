@@ -28,5 +28,5 @@ def notify_subscribers_about_updating_course(course_id):
         send_course_update_email.delay(
             user_email=subscriber.user.email,
             course_title=course.title,
-            message=f"Курс '{course.title}' был изменен. {"message"}"
+            message=f"Курс '{course.title}' был изменен. {"message"}",
         )
