@@ -1,6 +1,3 @@
-from rest_framework import serializers
-from rest_framework_simplejwt import settings
-
 from .models import User
 from rest_framework import serializers
 from .models import Payment

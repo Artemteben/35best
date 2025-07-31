@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-from django.utils.timezone import now, timedelta
 from rest_framework import viewsets
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import (
@@ -13,19 +12,7 @@ from rest_framework.views import APIView
 
 from .models import Course, Subscription
 from .models import Lesson
-from .paginators import CustomPagination
 from .serializers import CourseSerializer, LessonSerializer
-from .tasks import send_course_update_email, notify_subscribers_about_updating_course
-
-
-class CourseViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-    pagination_class = CustomPagination
-
-    def perform_update(self, serializer):
-        course = serializer.save()
-        notify_subscribers_about_updating_course.delay(course_id=course.id)
 
 
 class CourseCreateAPIView(CreateAPIView):
