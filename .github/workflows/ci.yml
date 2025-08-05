@@ -76,11 +76,14 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
-      - name: Deploy to Server
+      - name: Deploy to server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} 'sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/myapp:${{ github.sha }}' << EOF
-            sudo docker system prune -f
-            sudo docker stop myapp || true
-            sudo docker rm myapp || true
-            sudo docker run --name myapp -p 80:8000
+          sshpass -p root ssh -v -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "cd 35best/ && git pull" << 'EOF'
+          docker compose down
+          docker container prune -f
+          docker image prune -f
+          docker network prune -f
+          docker volume prune -f
+          docker rmi lms
+          sudo docker compose up -d --build
           EOF
