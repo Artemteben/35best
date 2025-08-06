@@ -9,8 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", False) == "True"
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['51.250.33.202', 'localhost']
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Application definition
 
 INSTALLED_APPS = [
@@ -69,12 +69,7 @@ if "test" in sys.argv:
 else:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.postgresql_psycopg2",
-            "NAME": config("NAME"),
-            "USER": config("USER"),
-            "PASSWORD": config("PASSWORD"),
-            "HOST": config("HOST"),
-            "PORT": config("PORT"),
+            "ENGINE": "django.db.backends.sqlite3",
         }
     }
 
