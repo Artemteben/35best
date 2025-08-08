@@ -86,4 +86,5 @@ jobs:
           docker volume prune -f
           docker rmi lms
           sudo docker compose up -d --build
+          sudo docker logs nginx
           EOF
