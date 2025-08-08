@@ -107,7 +107,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [
-BASE_DIR / "static", # if in local project has static
+    BASE_DIR / "static",
 ]
 
 MEDIA_URL = "media/"
