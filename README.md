@@ -1,14 +1,11 @@
-# DRF6
+# CI CD  Github Actions
 
-33 Celery
-Celery — это распределенная система обработки задач в фоновом режиме
-для языка программирования Python. Широко используется в проектах Django,
-включая проекты на основе Django REST framework.
+
 
 ## Установка
 
 1. **Клонируйте репозиторий:**
-   git@github.com:Artemteben/DRF6_Celery.git
+   git@github.com:Artemteben/35best.git
 
 2. **Создайте виртуальное окружение и активируйте его:**
     ```sh
